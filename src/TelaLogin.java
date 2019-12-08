@@ -14,7 +14,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public static ArrayList<String> senhaPaciente;
     public static ArrayList<String> nomePaciente;
 
-    //"Banco de dados" - ADMINISTRADOR
+    //"Banco de dados" - ADM
     public static ArrayList<String> usuarioAdm;
     public static ArrayList<String> nomeAdm;
     public static ArrayList<String> senhaAdm;
@@ -25,10 +25,16 @@ public class TelaLogin extends javax.swing.JFrame {
     public static ArrayList<String> senhaMedico;
     public static ArrayList<String> especialidadeMedico;
     
+    //"Dados da tabela de solicitações de consulta" - ADM
     public static ArrayList<String> cpf;
     public static ArrayList<String> esp;
     public static ArrayList<String> tur;
     public static ArrayList<String> dia;
+    
+    // "Dados da tabela de consultas marcadas" - MÉDICO
+    public static ArrayList<String> cpfM;
+    public static ArrayList<String> diaM;
+    public static ArrayList<String> turM;
 
     public TelaLogin() {
         initComponents();
@@ -39,6 +45,10 @@ public class TelaLogin extends javax.swing.JFrame {
         esp = new ArrayList<>();
         tur = new ArrayList<>();
         dia = new ArrayList<>(); 
+        
+        cpfM = new ArrayList<>();
+        diaM = new ArrayList<>();
+        turM = new ArrayList<>();
         
         CPFs = new ArrayList<>();
         senhaPaciente = new ArrayList<>();

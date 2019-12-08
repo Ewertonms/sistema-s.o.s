@@ -11,13 +11,15 @@
  */
 public class AgendaMedico extends javax.swing.JDialog {
 
-    dadosConsulta d = new dadosConsulta();
+    dadosConsulta p = new dadosConsulta();
     modeloConsulta tab = new modeloConsulta();
     
     
     public AgendaMedico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        tabelaAgenda.setModel(tab);
     }
 
     /**
@@ -66,9 +68,6 @@ public class AgendaMedico extends javax.swing.JDialog {
 
         tabelaAgenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -121,7 +120,7 @@ public class AgendaMedico extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(attCons)
-                .addGap(0, 146, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,21 +138,22 @@ public class AgendaMedico extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void attConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attConsActionPerformed
-        System.out.println("Tá errado.");
+        
+        int z = 0;
+        
+        for (int i = 0; i < TelaLogin.cpfM.size(); i++) {
+            
+            
+            z = TelaLogin.CPFs.indexOf(TelaLogin.cpfM.get(i));
+            
+            p.setPaciente(TelaLogin.nomePaciente.get(z));
+            p.setDia(TelaLogin.diaM.get(i));
+            p.setTurno(TelaLogin.turM.get(i));
+            
+            tab.addLinha(p);
+            
+        }
 
-//        
-//        for (int i = 0; i < TelaLogin.nomePaciente.size(); i++) {
-//            
-//        }
-//        
-//        for (int i = 0; i < TelaLogin.cpf.size(); i++) {
-//        
-//        d.setPaciente();
-//        d.setDia(TelaLogin.dia.get(i));
-//        d.setTurno(TelaLogin.tur.get(i));
-//        }
-//        
-//        tab.addLinha(d);
     }//GEN-LAST:event_attConsActionPerformed
 
     /**

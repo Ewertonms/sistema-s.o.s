@@ -68,7 +68,7 @@ public class agenConsulta extends javax.swing.JDialog {
             }
         });
 
-        botãoConf.setBackground(new java.awt.Color(255, 0, 0));
+        botãoConf.setBackground(new java.awt.Color(255, 102, 102));
         botãoConf.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         botãoConf.setForeground(new java.awt.Color(255, 255, 255));
         botãoConf.setText("Confirmar");

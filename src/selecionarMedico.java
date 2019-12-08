@@ -1,4 +1,5 @@
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /*
@@ -108,6 +109,15 @@ public class selecionarMedico extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Por favor, selecione um médico!");
         } else {
             JOptionPane.showMessageDialog(rootPane, "Consulta marcada com sucesso!");
+            TelaLogin.cpfM.add(Identificacao.cpfPaciente);
+            TelaLogin.diaM.add(Identificacao.diaConsulta);
+            TelaLogin.turM.add(Identificacao.turnoConsulta);
+            
+            Identificacao.m.setVisible(false);
+            
+            System.out.println(TelaLogin.cpfM);
+            System.out.println(TelaLogin.diaM);
+            System.out.println(TelaLogin.turM);
         }
     }//GEN-LAST:event_salvarMarcacaoActionPerformed
 

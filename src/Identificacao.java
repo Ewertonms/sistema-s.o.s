@@ -13,8 +13,11 @@ import javax.swing.JOptionPane;
  */
 public class Identificacao extends javax.swing.JDialog {
 
+    public static selecionarMedico m;
     public static String cpfPaciente;
     public static String especialidadeEscolhida;
+    public static String turnoConsulta;
+    public static String diaConsulta;
     
     public Identificacao(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -193,13 +196,19 @@ public class Identificacao extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void prossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prossActionPerformed
-        cpfPaciente = campoIdentificacao.getText();
-        especialidadeEscolhida = selecionarEspeci.getSelectedItem().toString();
         
-        
-        if (TelaLogin.CPFs.contains(cpfPaciente) == true && TelaLogin.especialidadeMedico.contains(selecionarEspeci.getSelectedItem()) == true) {
-            selecionarMedico m = new selecionarMedico(null, false);
+        if (TelaLogin.CPFs.contains(campoIdentificacao.getText()) == true && TelaLogin.especialidadeMedico.contains(selecionarEspeci.getSelectedItem()) == true) {
+            cpfPaciente = campoIdentificacao.getText();
+            especialidadeEscolhida = selecionarEspeci.getSelectedItem().toString();
+            diaConsulta = selecDia.getSelectedItem().toString();
+            turnoConsulta = selecionarTur.getSelectedItem().toString();
+            m = new selecionarMedico(null, false);
             m.setVisible(true);
+            
+            campoIdentificacao.setText("");
+            selecionarEspeci.setSelectedItem("Selecione uma especialidade");
+            selecDia.setSelectedItem("Selecione um dia");
+            selecionarTur.setSelectedItem("Selecione um turno");
         } else if (TelaLogin.CPFs.contains(cpfPaciente) == false){
             JOptionPane.showMessageDialog(rootPane, "O CPF digitado não está cadastrado!");
         } else if (TelaLogin.especialidadeMedico.contains(selecionarEspeci.getSelectedItem()) == false) {

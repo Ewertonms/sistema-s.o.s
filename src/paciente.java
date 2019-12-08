@@ -32,8 +32,8 @@ public class paciente extends javax.swing.JDialog {
         painelCab = new javax.swing.JPanel();
         Cabeçalho = new javax.swing.JLabel();
         solAgend = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        VisConsulta = new javax.swing.JButton();
+        resConsulta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(662, 517));
@@ -69,7 +69,8 @@ public class paciente extends javax.swing.JDialog {
         );
 
         solAgend.setBackground(new java.awt.Color(255, 102, 102));
-        solAgend.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        solAgend.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        solAgend.setForeground(new java.awt.Color(255, 255, 255));
         solAgend.setText("Solicitar agendamento de consulta");
         solAgend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,13 +78,25 @@ public class paciente extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jButton2.setText("Visualizar consultas agendadas");
+        VisConsulta.setBackground(new java.awt.Color(255, 102, 102));
+        VisConsulta.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        VisConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        VisConsulta.setText("Visualizar consultas agendadas");
+        VisConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VisConsultaActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 102, 102));
-        jButton3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jButton3.setText("Visualizar resutado de uma consulta");
+        resConsulta.setBackground(new java.awt.Color(255, 102, 102));
+        resConsulta.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        resConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        resConsulta.setText("Visualizar resutado de uma consulta");
+        resConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resConsultaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
         Painel.setLayout(PainelLayout);
@@ -99,9 +112,9 @@ public class paciente extends javax.swing.JDialog {
                     .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(VisConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(solAgend, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(resConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PainelLayout.setVerticalGroup(
@@ -113,10 +126,10 @@ public class paciente extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(solAgend)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(VisConsulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addComponent(resConsulta)
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +151,16 @@ public class paciente extends javax.swing.JDialog {
         agenConsulta a = new agenConsulta(null, false);
         a.setVisible(true);
     }//GEN-LAST:event_solAgendActionPerformed
+
+    private void VisConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisConsultaActionPerformed
+        VisConsulta v = new VisConsulta (null, false);
+        v.setVisible(true);
+    }//GEN-LAST:event_VisConsultaActionPerformed
+
+    private void resConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resConsultaActionPerformed
+    resConsulta r = new resConsulta (null, false);
+   r.setVisible(true);
+    }//GEN-LAST:event_resConsultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,9 +208,9 @@ public class paciente extends javax.swing.JDialog {
     private javax.swing.JLabel Cabeçalho;
     private javax.swing.JLabel Opções;
     private javax.swing.JPanel Painel;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton VisConsulta;
     private javax.swing.JPanel painelCab;
+    private javax.swing.JButton resConsulta;
     private javax.swing.JButton solAgend;
     // End of variables declaration//GEN-END:variables
 }
