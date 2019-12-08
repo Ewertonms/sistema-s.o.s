@@ -35,11 +35,20 @@ public class TelaLogin extends javax.swing.JFrame {
     public static ArrayList<String> cpfM;
     public static ArrayList<String> diaM;
     public static ArrayList<String> turM;
+    
+    //"Dados da tabela de conultas marcadas" - Paciente 
+    public static ArrayList<String> medP;
+    public static ArrayList<String> espP;
+    
+    
+    public static String cpfLogin;
 
     public TelaLogin() {
         initComponents();
         campoUsuarioCPF.setVisible(false);
         textoCPF.setVisible(false);
+        
+        cpfLogin = "";
         
         cpf = new ArrayList<>();
         esp = new ArrayList<>();
@@ -49,6 +58,10 @@ public class TelaLogin extends javax.swing.JFrame {
         cpfM = new ArrayList<>();
         diaM = new ArrayList<>();
         turM = new ArrayList<>();
+        
+        medP = new ArrayList<>();
+        espP = new ArrayList<>();
+        
         
         CPFs = new ArrayList<>();
         senhaPaciente = new ArrayList<>();
@@ -365,6 +378,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 if (campoUsuarioCPF.getText().equals(CPFs.get(i)) && s.equals(senhaPaciente.get(i))) {
                     paciente p = new paciente(this, false);
                     p.setVisible(true);
+                    cpfLogin = campoUsuarioCPF.getText();
                     campoUsuarioCPF.setText("");
                     campoSenha.setText("");
                     x = -1;

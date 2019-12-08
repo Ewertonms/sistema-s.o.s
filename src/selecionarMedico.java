@@ -112,7 +112,9 @@ public class selecionarMedico extends javax.swing.JDialog {
             TelaLogin.cpfM.add(Identificacao.cpfPaciente);
             TelaLogin.diaM.add(Identificacao.diaConsulta);
             TelaLogin.turM.add(Identificacao.turnoConsulta);
-            
+            TelaLogin.espP.add(Identificacao.especialidadeEscolhida);
+            TelaLogin.medP.add(selecMedico.getSelectedItem().toString());
+                    
             Identificacao.m.setVisible(false);
             
             System.out.println(TelaLogin.cpfM);

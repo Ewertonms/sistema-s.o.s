@@ -10,12 +10,14 @@
  */
 public class VisConsulta extends javax.swing.JDialog {
 
-    /**
-     * Creates new form VisConsulta
-     */
+    dadosConPaciente c = new dadosConPaciente();
+    modeloConPaciente tabela = new modeloConPaciente();
+    
     public VisConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        tabelaPaciente.setModel(tabela);
     }
 
     /**
@@ -31,8 +33,8 @@ public class VisConsulta extends javax.swing.JDialog {
         cabeçalho = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Tabela = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tabelaPaciente = new javax.swing.JTable();
+        attTabelaPaciente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,22 +61,19 @@ public class VisConsulta extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "Médico", "Especialidade", "Turno"
+                "Médico", "Especialidade", "Dia", "Turno"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -85,8 +84,8 @@ public class VisConsulta extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setToolTipText("");
-        Tabela.setViewportView(jTable1);
+        tabelaPaciente.setToolTipText("");
+        Tabela.setViewportView(tabelaPaciente);
 
         javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
         Painel.setLayout(PainelLayout);
@@ -100,13 +99,18 @@ public class VisConsulta extends javax.swing.JDialog {
             .addGroup(PainelLayout.createSequentialGroup()
                 .addComponent(cabeçalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Tabela, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addComponent(Tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 102));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Atualizar");
+        attTabelaPaciente.setBackground(new java.awt.Color(255, 102, 102));
+        attTabelaPaciente.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        attTabelaPaciente.setForeground(new java.awt.Color(255, 255, 255));
+        attTabelaPaciente.setText("Atualizar");
+        attTabelaPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attTabelaPacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,20 +119,41 @@ public class VisConsulta extends javax.swing.JDialog {
             .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(203, 203, 203)
-                .addComponent(jButton1)
+                .addComponent(attTabelaPaciente)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(attTabelaPaciente)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void attTabelaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attTabelaPacienteActionPerformed
+        
+        int h = 0;
+        
+        
+            if (TelaLogin.cpfM.contains(TelaLogin.cpfLogin) == true) {
+                h = TelaLogin.cpfM.indexOf(TelaLogin.cpfLogin);
+                
+                c.setMedico(TelaLogin.medP.get(h));
+                c.setEspec(TelaLogin.espP.get(h));
+                c.setDia(TelaLogin.diaM.get(h));
+                c.setTurno(TelaLogin.turM.get(h));
+                
+                tabela.addRow(c);
+            }
+            
+            
+            
+        
+    }//GEN-LAST:event_attTabelaPacienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,9 +200,9 @@ public class VisConsulta extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Painel;
     private javax.swing.JScrollPane Tabela;
+    private javax.swing.JButton attTabelaPaciente;
     private javax.swing.JPanel cabeçalho;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaPaciente;
     // End of variables declaration//GEN-END:variables
 }

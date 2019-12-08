@@ -109,7 +109,7 @@ public class Identificacao extends javax.swing.JDialog {
 
         jLabel3.setText("ESPECIALIDADE:");
 
-        selecDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um dia", "Segunda-Feira - 02/12", "Terça-Feira - 03/12", "Quarta-Feira - 04/12", "Quinta-Feira - 05/12", "Sexta-Feira - 06/12" }));
+        selecDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um dia", "Segunda-Feira - 09/12", "Terça-Feira - 10/12", "Quarta-Feira - 11/12", "Quinta-Feira - 12/12", "Sexta-Feira - 13/12" }));
         selecDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selecDiaActionPerformed(evt);

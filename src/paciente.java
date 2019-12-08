@@ -10,12 +10,17 @@
  */
 public class paciente extends javax.swing.JDialog {
 
-    /**
-     * Creates new form paciente
-     */
+    public int ind;
+    
     public paciente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        if (TelaLogin.CPFs.contains(TelaLogin.cpfLogin)) {
+            ind = TelaLogin.CPFs.indexOf(TelaLogin.cpfLogin);
+        }
+        
+        nomeTelaInicialPac.setText(TelaLogin.nomePaciente.get(ind).toString());
     }
 
     /**
@@ -29,11 +34,12 @@ public class paciente extends javax.swing.JDialog {
 
         Painel = new javax.swing.JPanel();
         Opções = new javax.swing.JLabel();
-        painelCab = new javax.swing.JPanel();
-        Cabeçalho = new javax.swing.JLabel();
         solAgend = new javax.swing.JButton();
         VisConsulta = new javax.swing.JButton();
         resConsulta = new javax.swing.JButton();
+        painelCab = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        nomeTelaInicialPac = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(662, 517));
@@ -42,31 +48,8 @@ public class paciente extends javax.swing.JDialog {
         Painel.setBackground(new java.awt.Color(255, 255, 255));
         Painel.setPreferredSize(new java.awt.Dimension(662, 517));
 
-        Opções.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Opções.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Opções.setText("Você deseja:");
-
-        painelCab.setBackground(new java.awt.Color(255, 102, 102));
-
-        Cabeçalho.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        Cabeçalho.setForeground(new java.awt.Color(255, 255, 255));
-        Cabeçalho.setText("Bem vindo! (Paciente)");
-
-        javax.swing.GroupLayout painelCabLayout = new javax.swing.GroupLayout(painelCab);
-        painelCab.setLayout(painelCabLayout);
-        painelCabLayout.setHorizontalGroup(
-            painelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCabLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(Cabeçalho)
-                .addContainerGap(164, Short.MAX_VALUE))
-        );
-        painelCabLayout.setVerticalGroup(
-            painelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCabLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(Cabeçalho)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
 
         solAgend.setBackground(new java.awt.Color(255, 102, 102));
         solAgend.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -103,44 +86,75 @@ public class paciente extends javax.swing.JDialog {
         PainelLayout.setHorizontalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelLayout.createSequentialGroup()
-                .addComponent(painelCab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(PainelLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
                 .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Opções)
                     .addGroup(PainelLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(181, 181, 181)
+                        .addComponent(Opções))
+                    .addGroup(PainelLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
                         .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(VisConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(solAgend, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(resConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         PainelLayout.setVerticalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelLayout.createSequentialGroup()
-                .addComponent(painelCab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addGap(39, 39, 39)
                 .addComponent(Opções)
                 .addGap(18, 18, 18)
                 .addComponent(solAgend)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(VisConsulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(resConsulta)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
+        painelCab.setBackground(new java.awt.Color(255, 102, 102));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Seja bem-vindo,");
+
+        nomeTelaInicialPac.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nomeTelaInicialPac.setText("jLabel1");
+
+        javax.swing.GroupLayout painelCabLayout = new javax.swing.GroupLayout(painelCab);
+        painelCab.setLayout(painelCabLayout);
+        painelCabLayout.setHorizontalGroup(
+            painelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCabLayout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeTelaInicialPac)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        painelCabLayout.setVerticalGroup(
+            painelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCabLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(painelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nomeTelaInicialPac, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addComponent(painelCab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(painelCab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -205,10 +219,11 @@ public class paciente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Cabeçalho;
     private javax.swing.JLabel Opções;
     private javax.swing.JPanel Painel;
     private javax.swing.JButton VisConsulta;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel nomeTelaInicialPac;
     private javax.swing.JPanel painelCab;
     private javax.swing.JButton resConsulta;
     private javax.swing.JButton solAgend;
