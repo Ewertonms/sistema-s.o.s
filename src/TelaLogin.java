@@ -40,14 +40,40 @@ public class TelaLogin extends javax.swing.JFrame {
     public static ArrayList<String> medP;
     public static ArrayList<String> espP;
     
+    //Cadastro de agenda do MÉDICO:
+    public static ArrayList<String> diasAgenda;
+    public static ArrayList<String> turnoAgenda;
+    public static ArrayList<String> nomeAgenda;
     
+    //Login de usuários para utilizar mais a frente:
     public static String cpfLogin;
+    public static String usuarioLogin;
+    
+    //Teste de confirmação
+    public static ArrayList<Integer> conf;
+    
+    //Chat
+     public static String msgMedico;
+     public static String destinatario;
+     public static String autor;
 
     public TelaLogin() {
         initComponents();
+        
+        msgMedico = "";
+        destinatario = "";
+        autor = "";
+        
+        conf = new ArrayList<>();
+        
         campoUsuarioCPF.setVisible(false);
         textoCPF.setVisible(false);
         
+        diasAgenda = new ArrayList<>();
+        turnoAgenda = new ArrayList<>();
+        nomeAgenda = new ArrayList<>();
+        
+        usuarioLogin = "";
         cpfLogin = "";
         
         cpf = new ArrayList<>();
@@ -387,6 +413,7 @@ public class TelaLogin extends javax.swing.JFrame {
         } else if (entrarComo.getSelectedItem().equals("Médico")) {
             for (int i = 0; i < loginMedico.size(); i++) {
                 if (campoUsuario.getText().equals(loginMedico.get(i)) && s.equals(senhaMedico.get(i))) {
+                    usuarioLogin = campoUsuario.getText();
                     interfaceMedico m = new interfaceMedico(this, false);
                     m.setVisible(true);
                     campoUsuario.setText("");

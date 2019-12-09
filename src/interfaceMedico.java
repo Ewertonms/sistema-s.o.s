@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,11 +14,14 @@
 public class interfaceMedico extends javax.swing.JDialog {
 
     
-    
+    public static cadastroAgenda c = new cadastroAgenda(null, false);
+    public msgMedico m;
     
     public interfaceMedico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        nomeMedico.setText(TelaLogin.nomeMedico.get(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin)));
         
     }
     
@@ -36,6 +42,7 @@ public class interfaceMedico extends javax.swing.JDialog {
         nomeMedico = new javax.swing.JLabel();
         cadastrarAgenda = new javax.swing.JButton();
         visualizarConsultas = new javax.swing.JButton();
+        mensagemMed = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -91,6 +98,15 @@ public class interfaceMedico extends javax.swing.JDialog {
             }
         });
 
+        mensagemMed.setBackground(new java.awt.Color(255, 153, 153));
+        mensagemMed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mensagemMed.setText("MENSAGENS DE CONSULTAS");
+        mensagemMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mensagemMedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -100,18 +116,21 @@ public class interfaceMedico extends javax.swing.JDialog {
                 .addGap(102, 102, 102)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cadastrarAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(visualizarConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
+                    .addComponent(visualizarConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(mensagemMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
-                .addComponent(cadastrarAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(visualizarConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 143, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(cadastrarAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(visualizarConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(mensagemMed, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 115, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,14 +149,23 @@ public class interfaceMedico extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarAgendaActionPerformed
-        cadastroAgenda c = new cadastroAgenda(null, false);
-        c.setVisible(true);
+        if (TelaLogin.conf.get(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin)) == 0) {
+            c.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Sua agenda já foi cadastrada!");
+        }
+        
     }//GEN-LAST:event_cadastrarAgendaActionPerformed
 
     private void visualizarConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarConsultasActionPerformed
         AgendaMedico a = new AgendaMedico(null, false);
         a.setVisible(true);
     }//GEN-LAST:event_visualizarConsultasActionPerformed
+
+    private void mensagemMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mensagemMedActionPerformed
+         m = new msgMedico(null, false);
+         m.setVisible(true);
+    }//GEN-LAST:event_mensagemMedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +214,7 @@ public class interfaceMedico extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton mensagemMed;
     private javax.swing.JLabel nomeMedico;
     private javax.swing.JButton visualizarConsultas;
     // End of variables declaration//GEN-END:variables

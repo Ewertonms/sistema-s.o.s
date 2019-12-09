@@ -249,11 +249,11 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
                 <StringItem index="0" value="Selecione um dia"/>
-                <StringItem index="1" value="Segunda-Feira - 09/12"/>
-                <StringItem index="2" value="Ter&#xe7;a-Feira - 10/12"/>
-                <StringItem index="3" value="Quarta-Feira - 11/12"/>
-                <StringItem index="4" value="Quinta-Feira - 12/12"/>
-                <StringItem index="5" value="Sexta-Feira - 13/12"/>
+                <StringItem index="1" value="Segunda-feira "/>
+                <StringItem index="2" value="Ter&#xe7;a-feira"/>
+                <StringItem index="3" value="Quarta-feira"/>
+                <StringItem index="4" value="Quinta-feira"/>
+                <StringItem index="5" value="Sexta-feira"/>
               </StringArray>
             </Property>
           </Properties>

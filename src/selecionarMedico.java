@@ -117,9 +117,7 @@ public class selecionarMedico extends javax.swing.JDialog {
                     
             Identificacao.m.setVisible(false);
             
-            System.out.println(TelaLogin.cpfM);
-            System.out.println(TelaLogin.diaM);
-            System.out.println(TelaLogin.turM);
+            
         }
     }//GEN-LAST:event_salvarMarcacaoActionPerformed
 

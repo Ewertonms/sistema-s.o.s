@@ -254,6 +254,7 @@ public class cadastroDeMedico extends javax.swing.JDialog {
             TelaLogin.addSenhaMedico(s);
             TelaLogin.addNomeMedico(campoNomeMedico.getText());
             TelaLogin.addEspecialidade(e);
+            TelaLogin.conf.add(0);
             campoNomeMedico.setText("");
             campoSenhaMedico.setText("");
             campoUsuarioMedico.setText("");

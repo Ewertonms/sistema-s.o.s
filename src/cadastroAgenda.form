@@ -7,11 +7,6 @@
         <Property name="text" type="java.lang.String" value="jRadioButton1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
@@ -236,9 +231,10 @@
         <Component class="javax.swing.JComboBox" name="selecionarTurno">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Matutino"/>
-                <StringItem index="1" value="Vespertino"/>
+              <StringArray count="3">
+                <StringItem index="0" value="Selecione um turno"/>
+                <StringItem index="1" value="Matutino"/>
+                <StringItem index="2" value="Vespertino"/>
               </StringArray>
             </Property>
           </Properties>

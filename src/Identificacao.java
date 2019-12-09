@@ -109,7 +109,7 @@ public class Identificacao extends javax.swing.JDialog {
 
         jLabel3.setText("ESPECIALIDADE:");
 
-        selecDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um dia", "Segunda-Feira - 09/12", "Terça-Feira - 10/12", "Quarta-Feira - 11/12", "Quinta-Feira - 12/12", "Sexta-Feira - 13/12" }));
+        selecDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um dia", "Segunda-feira ", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira" }));
         selecDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selecDiaActionPerformed(evt);
@@ -197,11 +197,23 @@ public class Identificacao extends javax.swing.JDialog {
 
     private void prossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prossActionPerformed
         
-        if (TelaLogin.CPFs.contains(campoIdentificacao.getText()) == true && TelaLogin.especialidadeMedico.contains(selecionarEspeci.getSelectedItem()) == true) {
+        System.out.println(TelaLogin.diasAgenda);
+        System.out.println(TelaLogin.turnoAgenda);
+        
+        if (TelaLogin.CPFs.contains(campoIdentificacao.getText()) == false){
+            JOptionPane.showMessageDialog(rootPane, "O CPF digitado não está cadastrado!");
+        } else if (TelaLogin.especialidadeMedico.contains(selecionarEspeci.getSelectedItem()) == false) {
+            JOptionPane.showMessageDialog(rootPane, "Não existe médico cadastrado nesta especialidade!");
+        } else if (selecDia.getSelectedItem().equals("Selecione um dia") == true || 
+        selecionarTur.getSelectedItem().equals("Selecione um turno") == true){
+            JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos");
+        } else if(TelaLogin.CPFs.contains(campoIdentificacao.getText()) == true 
+        && TelaLogin.especialidadeMedico.contains(selecionarEspeci.getSelectedItem()) == true) {
             cpfPaciente = campoIdentificacao.getText();
             especialidadeEscolhida = selecionarEspeci.getSelectedItem().toString();
             diaConsulta = selecDia.getSelectedItem().toString();
             turnoConsulta = selecionarTur.getSelectedItem().toString();
+            
             m = new selecionarMedico(null, false);
             m.setVisible(true);
             
@@ -209,11 +221,7 @@ public class Identificacao extends javax.swing.JDialog {
             selecionarEspeci.setSelectedItem("Selecione uma especialidade");
             selecDia.setSelectedItem("Selecione um dia");
             selecionarTur.setSelectedItem("Selecione um turno");
-        } else if (TelaLogin.CPFs.contains(cpfPaciente) == false){
-            JOptionPane.showMessageDialog(rootPane, "O CPF digitado não está cadastrado!");
-        } else if (TelaLogin.especialidadeMedico.contains(selecionarEspeci.getSelectedItem()) == false) {
-            JOptionPane.showMessageDialog(rootPane, "Não existe médico cadastrado nesta especialidade!");
-        }
+        } 
         
         
     }//GEN-LAST:event_prossActionPerformed

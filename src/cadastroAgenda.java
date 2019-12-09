@@ -1,3 +1,9 @@
+
+import javax.swing.JOptionPane;
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,7 +34,6 @@ public class cadastroAgenda extends javax.swing.JDialog {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jCheckBox2 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
@@ -46,8 +51,6 @@ public class cadastroAgenda extends javax.swing.JDialog {
         salvarAgenda = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
-
-        jCheckBox1.setText("jCheckBox1");
 
         jLabel1.setText("jLabel1");
 
@@ -98,7 +101,7 @@ public class cadastroAgenda extends javax.swing.JDialog {
 
         sex.setText("Sexta-feira");
 
-        selecionarTurno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Matutino", "Vespertino" }));
+        selecionarTurno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um turno", "Matutino", "Vespertino" }));
 
         salvarAgenda.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         salvarAgenda.setText("SALVAR AGENDA");
@@ -191,19 +194,43 @@ public class cadastroAgenda extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salvarAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarAgendaActionPerformed
-        if(seg.isSelected() == true){
-            dias += seg.getText() + " ";
-        } if(ter.isSelected() == true){
-            dias += ter.getText() + " ";
-        } if(qua.isSelected() == true){
-            dias += qua.getText() + " ";
-        } if(qui.isSelected() == true){
-            dias += qui.getText() + " ";
-        } if(sex.isSelected() == true){
-            dias += sex.getText() + " ";
+        
+        if(seg.isSelected() == false && ter.isSelected() == false
+        && qua.isSelected() == false && qui.isSelected() == false
+        && sex.isSelected() == false){
+            JOptionPane.showMessageDialog(this, "Selecione ao menos um dia da semana!");
+        } else if(selecionarTurno.getSelectedItem().equals("Selecione um turno")){
+            JOptionPane.showMessageDialog(this, "Selecione um turno para atendimento!");
+        } else{
+            if(seg.isSelected() == true){
+                TelaLogin.diasAgenda.add(seg.getText());
+                TelaLogin.turnoAgenda.add(selecionarTurno.getSelectedItem().toString());
+                TelaLogin.nomeAgenda.add(TelaLogin.nomeMedico.get(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin)));
+            } if(ter.isSelected() == true){
+                TelaLogin.diasAgenda.add(ter.getText());
+                TelaLogin.turnoAgenda.add(selecionarTurno.getSelectedItem().toString());
+                TelaLogin.nomeAgenda.add(TelaLogin.nomeMedico.get(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin)));
+            } if(qua.isSelected() == true){
+                TelaLogin.diasAgenda.add(qua.getText());
+                TelaLogin.turnoAgenda.add(selecionarTurno.getSelectedItem().toString());
+                TelaLogin.nomeAgenda.add(TelaLogin.nomeMedico.get(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin)));
+            } if(qui.isSelected() == true){
+                TelaLogin.diasAgenda.add(qui.getText());
+                TelaLogin.turnoAgenda.add(selecionarTurno.getSelectedItem().toString());
+                TelaLogin.nomeAgenda.add(TelaLogin.nomeMedico.get(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin)));
+            } if(sex.isSelected() == true){
+                TelaLogin.diasAgenda.add(sex.getText());
+                TelaLogin.turnoAgenda.add(selecionarTurno.getSelectedItem().toString());
+                TelaLogin.nomeAgenda.add(TelaLogin.nomeMedico.get(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin)));
+            }
+            
+            
+            JOptionPane.showMessageDialog(this, "Agenda cadastrada com sucesso!");
+            interfaceMedico.c.setVisible(false);
+            TelaLogin.conf.set(TelaLogin.loginMedico.indexOf(TelaLogin.usuarioLogin), 1);
         }
         
-        turno = selecionarTurno.getSelectedItem().toString();
+        
     }//GEN-LAST:event_salvarAgendaActionPerformed
 
     /**
@@ -249,7 +276,6 @@ public class cadastroAgenda extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
